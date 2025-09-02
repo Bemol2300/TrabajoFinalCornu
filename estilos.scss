@@ -1,0 +1,253 @@
+@charset "UTF-8";
+
+/* ================================
+   Variables pastel
+=================================== */
+$bg: #fdfdfd;
+$card: #ffffff;
+$primary: #82c4f8;      
+$primary-700: #5aaeea;  
+$accent: #f9a8d4;       
+$text: #374151;         
+$muted: #6b7280;        
+$radius: 14px;
+$shadow: 0 6px 18px rgba(0,0,0,.06);
+$shadow-hover: 0 10px 25px rgba(0,0,0,.10);
+$ring: 0 0 0 3px rgba(130,196,248,.35);
+
+/* ================================
+   Reset / base
+=================================== */
+* { box-sizing: border-box; }
+html, body { height: 100%; scroll-behavior: smooth; }
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, $bg, #fef6fb 80%);
+  color: $text;
+  margin: 0;
+}
+
+/* Utilitario contenedor */
+.container {
+  width: min(1100px, 92vw);
+  margin-inline: auto;
+  padding: 20px;
+}
+
+/* ================================
+   Header / Nav (común a todas las páginas)
+=================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: linear-gradient(90deg, $primary, $accent);
+  color: #fff;
+  padding: 16px;
+  box-shadow: $shadow;
+
+  nav {
+    ul {
+      list-style: none;
+      margin: 8px 0 0 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      justify-content: center;
+    }
+    li { display: inline-flex; }
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: all .25s ease;
+
+      &:hover {
+        background-color: rgba(255,255,255,.2);
+        color: #fffbea;
+        transform: translateY(-1px);
+        box-shadow: $shadow;
+      }
+      &:focus-visible {
+        outline: none;
+        box-shadow: $ring;
+      }
+    }
+  }
+}
+
+/* ================================
+   Hero (mensaje superior unificado)
+=================================== */
+.hero {
+  padding: 16px 12px;
+  border-radius: $radius;
+  background: linear-gradient(135deg, rgba(130,196,248,.18), rgba(249,168,212,.18));
+  box-shadow: $shadow;
+  margin: 10px 0 20px 0;
+  animation: fadeIn .7s ease both;
+}
+
+/* ================================
+   Grilla de tarjetas (index y secciones)
+=================================== */
+.grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(1, 1fr);
+  @media (min-width: 640px) { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 960px) { grid-template-columns: repeat(4, 1fr); } // 4 columnas en desktop
+}
+
+/* ================================
+   Tarjetas unificadas
+   - Abarca <article> (index y secciones)
+   - Abarca .auto y section article (código anterior)
+=================================== */
+article,
+.auto,
+section article {
+  background-color: $card;
+  border-radius: $radius;
+  padding: 14px;
+  box-shadow: $shadow;
+  border: 1px solid rgba(130,196,248,.25);
+  transition: transform .25s ease, box-shadow .25s ease;
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-hover;
+  }
+
+  /* Links de tarjeta (index) */
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  h3 {
+    margin: 10px 0 6px 0;
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin: 0;
+    color: $muted;
+  }
+}
+
+/* ================================
+   Imágenes (mismo tamaño en todas)
+=================================== */
+article img,
+.auto img,
+section article img {
+  display: block;
+  width: 100%;
+  max-width: 220px;     
+  margin: 10px auto;    
+  border-radius: calc(#{$radius} - 6px);
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  transition: transform .3s ease;
+}
+
+article:hover img,
+.auto:hover img,
+section article:hover img { transform: scale(1.03); }
+
+/* ================================
+   Botones (por si no usás Bootstrap)
+=================================== */
+.btn,
+button,
+input[type=submit] {
+  background-color: $primary;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s ease;
+
+  &:hover {
+    background-color: $primary-700;
+    transform: translateY(-1px);
+    box-shadow: $shadow;
+  }
+  &:focus-visible {
+    outline: none;
+    box-shadow: $ring;
+  }
+}
+
+/* Tamaño chico opcional para “Me interesa” */
+.btn-sm { padding: 8px 12px; font-size: .9rem; }
+
+/* ================================
+   Formularios (para contacto)
+=================================== */
+form {
+  background-color: $card;
+  padding: 18px;
+  max-width: 520px;
+  margin: 0 auto;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  border: 1px solid rgba(130,196,248,.25);
+
+  label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border: 1px solid rgba(130,196,248,.35);
+    border-radius: 12px;
+    transition: border-color .2s ease, box-shadow .2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: $ring;
+    }
+  }
+  input[type=submit] { margin-top: 16px; }
+}
+
+/* ================================
+   Footer
+=================================== */
+footer { border-top: 1px solid rgba(0,0,0,.06); }
+
+/* ================================
+   Animaciones
+=================================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+   Nav responsive simple
+=================================== */
+@media (max-width: 768px) {
+  header {
+    nav {
+      ul { flex-direction: column; align-items: center; }
+      li { margin: 4px 0; }
+    }
+  }
+}

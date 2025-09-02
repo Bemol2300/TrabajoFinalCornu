@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+/* Reset / base */
+*{box-sizing:border-box}
+html,body{height:100%;scroll-behavior:smooth}
+
+body{
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,#fdfdfd,#fef6fb 80%);
+  color:#374151;
+  margin:0
+}
+
+/* Contenedor utilitario */
+.container{
+  width:min(1100px,92vw);
+  margin-inline:auto;
+  padding:20px
+}
+
+/* Header / Nav */
+header{
+  position:sticky;top:0;z-index:50;
+  background:linear-gradient(90deg,#82c4f8,#f9a8d4);
+  color:#fff;padding:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06)
+}
+header nav ul{
+  list-style:none;margin:8px 0 0 0;padding:0;
+  display:flex;flex-wrap:wrap;gap:12px 18px;justify-content:center
+}
+header nav li{display:inline-flex}
+header nav a{
+  color:#fff;text-decoration:none;font-weight:600;
+  padding:8px 12px;border-radius:999px;transition:all .25s ease
+}
+header nav a:hover{
+  background-color:rgba(255,255,255,.2);
+  color:#fffbea;transform:translateY(-1px);
+  box-shadow:0 6px 18px rgba(0,0,0,.06)
+}
+header nav a:focus-visible{
+  outline:none;box-shadow:0 0 0 3px rgba(130,196,248,.35)
+}
+
+/* Hero */
+.hero{
+  padding:16px 12px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(130,196,248,.18),rgba(249,168,212,.18));
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  margin:10px 0 20px 0;animation:fadeIn .7s ease both
+}
+
+/* Grilla */
+.grid{
+  display:grid;gap:18px;grid-template-columns:repeat(1,1fr)
+}
+@media (min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:960px){.grid{grid-template-columns:repeat(4,1fr)}}
+
+/* Tarjetas unificadas */
+article,.auto,section article{
+  background-color:#ffffff;border-radius:14px;padding:14px;text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+  border:1px solid rgba(130,196,248,.25);
+  transition:transform .25s ease,box-shadow .25s ease
+}
+article:hover,.auto:hover,section article:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(0,0,0,.10)
+}
+article .card-link{display:block;text-decoration:none;color:inherit}
+article h3,.auto h3,section article h3{
+  margin:10px 0 6px 0;font-size:1.1rem
+}
+article p,.auto p,section article p{
+  margin:0;color:#6b7280
+}
+
+/* Imágenes */
+article img,.auto img,section article img{
+  display:block;width:100%;max-width:220px;margin:10px auto;
+  border-radius:8px;object-fit:cover;aspect-ratio:4/3;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  transition:transform .3s ease
+}
+article:hover img,.auto:hover img,section article:hover img{transform:scale(1.03)}
+
+/* Botones */
+.btn,button,input[type=submit]{
+  background-color:#82c4f8;color:#fff;border:none;border-radius:12px;
+  padding:10px 14px;font-weight:600;cursor:pointer;transition:all .2s ease
+}
+.btn:hover,button:hover,input[type=submit]:hover{
+  background-color:#5aaeea;transform:translateY(-1px);
+  box-shadow:0 6px 18px rgba(0,0,0,.06)
+}
+.btn:focus-visible,button:focus-visible,input[type=submit]:focus-visible{
+  outline:none;box-shadow:0 0 0 3px rgba(130,196,248,.35)
+}
+.btn-sm{padding:8px 12px;font-size:.9rem}
+
+/* Formularios (contacto) */
+form{
+  background-color:#ffffff;padding:18px;max-width:520px;margin:0 auto;
+  border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.06);
+  border:1px solid rgba(130,196,248,.25)
+}
+form label{display:block;margin-top:12px;font-weight:600}
+form input,form textarea{
+  width:100%;padding:10px 12px;margin-top:6px;
+  border:1px solid rgba(130,196,248,.35);border-radius:12px;
+  transition:border-color .2s ease,box-shadow .2s ease
+}
+form input:focus,form textarea:focus{
+  outline:none;border-color:#82c4f8;box-shadow:0 0 0 3px rgba(130,196,248,.35)
+}
+form input[type=submit]{margin-top:16px}
+
+/* Footer */
+footer{border-top:1px solid rgba(0,0,0,.06)}
+
+/* Animaciones */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Nav responsive simple */
+@media (max-width:768px){
+  header nav ul{flex-direction:column;align-items:center}
+  header nav li{margin:4px 0}
+}
